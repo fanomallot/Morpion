@@ -1,8 +1,9 @@
+
 class Game 
 	attr_accessor :player1 ,:a , :longueur, :bor ,:player2 , :stock , :give_choice
 	def initialize(player1 , player2)
-		@player1 = Player.new(player1, "X")
-		@player2 = Player.new(player2, "O")
+		@player1 = Player.new(player1, "X".yellow)
+		@player2 = Player.new(player2, "O".blue)
 		@bor = Boardcase.new
 		@stock = bor.casee
 		@a = [1,2,3,4,5,6,7,8,9]
@@ -50,38 +51,34 @@ class Game
 		for i in 0..2 do
 			puts @stoke
 			if @stock[i*2,0] == @stock[i*2,2] && @stock[i*2,2] == @stock[i*2,4]
-				if @stock[i*2,0] == "X"
-					puts "jeu terminé , #{player1.player_name} is the winner"
+				if @stock[i*2,0] == "X".yellow
+					puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player1.player_name} is the winner  👌 👌 👋 👋".yellow
 				else 
-					puts "jeu terminé , #{player2.player_name} is the winner"
+					puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player2.player_name} is the winner  👌 👌 👋 👋".blue
 				end
 				return true
-			# else 
-			# 	return false
 			end
 			if @stock[0,i*2] == @stock[2,i*2] && @stock[2,i*2] == @stock[4,i*2]
-				if @stock[0,i*2] == "X"
-					puts "jeu terminé ,#{player1.player_name}  is the winner"
+				if @stock[0,i*2] == "X".yellow
+					puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player1.player_name} is the winner  👌 👌 👋 👋".yellow
 				else 
-					puts "jeu terminé ,#{player2.player_name} is the winner"
+					puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player2.player_name} is the winner  👌 👌 👋 👋".blue
 				end
 				return true
-			# else 
-			# 	return false
 			end
 		end
 		if @stock[0,0] == @stock[2,2] && @stock[2,2] == @stock[4,4]
-			if @stock[0,0] == "X"
-				puts "jeu terminé ,#{player1.player_name}  is the winner"
+			if @stock[0,0] == "X".yellow
+				puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player1.player_name} is the winner  👌 👌 👋 👋".yellow
 			else 
-				puts "jeu terminé ,#{player2.player_name} is the winner"
+				puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player2.player_name} is the winner  👌 👌 👋 👋".blue
 			end
 			return true
 		elsif @stock[0,4] == @stock[2,2] && @stock[2,2] == @stock[4,0]
-			if @stock[0,4] == "X"
-				puts "jeu terminé ,#{player1.player_name}  is the winner"
+			if @stock[0,4] == "X".yellow
+				puts  "👋 👋  👌 👌 jeu terminé ,  🤖 #{player1.player_name} is the winner  👌 👌 👋 👋".yellow
 			else 
-				puts "jeu terminé ,#{player2.player_name} is the winner"
+				puts "👋 👋  👌 👌 jeu terminé ,  🤖 #{player2.player_name} is the winner  👌 👌 👋 👋".blue
 			end
 			return true
 		end
@@ -104,12 +101,36 @@ class Game
 			act_choice(player1.symbole)
 			system "clear"
 			@bor.show_screen
-			if test_winer == true 
+			if test_winer == true || test_nul == true
+				return true
 				break
 			end
 			puts " #{player2.player_name} joue"
 			act_choice(player2.symbole)
 			@bor.show_screen
+		end
+		return true
+	end
+	def ask_replay
+		puts " "
+		puts "👥👥 voulez-vous rejouer? 👥👥
+		tape 1 si oui ou 0 pour arrêter"
+		print = " 👉 "
+		replay = gets.chomp
+		while replay != "0" && replay != "1"
+			puts "Erreur 🙄 ,entré de nouveau"
+			print " 👉 "
+			replay= gets.chomp
+		end 
+		if replay == "1"
+			@a = [1,2,3,4,5,6,7,8,9]
+			@stock = bor.casee
+			self.turn
+			return true
+		else
+			print"🖐️  🖐️ Bye".blue 
+			puts "  gyus 🖐️ 🖐️".yellow
+			return false
 		end
 	end
 end
