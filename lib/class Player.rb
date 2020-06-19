@@ -25,7 +25,8 @@ class Player
 #permet de lier les cellules à la classe joueur
  def cells
    @board.cells
- endend
+ end
+end
 # Classe définissant le plateau de jeu
 class Board
  attr_accessor :cells
@@ -74,7 +75,8 @@ class Board
    else
      true
    end
- endend
+ end
+end
 #Cette classe permet de mettre en place le jeu et de le lancer avec des valeurs de base
 class Game  def initialize
    @board = Board.new
@@ -119,5 +121,7 @@ class Game  def initialize
    puts "Player O name: "
    name2 = gets.chomp
    [name1, name2]
- endendgame = Game.new
+ end
+end
+game = Game.new
 game.start_game
