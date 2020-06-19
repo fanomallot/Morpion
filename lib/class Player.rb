@@ -123,5 +123,6 @@ class Game  def initialize
    [name1, name2]
  end
 end
+#start game
 game = Game.new
 game.start_game
