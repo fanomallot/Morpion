@@ -29,21 +29,20 @@ class Game
 		tab.delete(@give_choice.to_i)	
 	end	
 	def act_choice(player)
-		make_choice
-		
+		make_choice		
 		for i in 1..3 do
 			if @give_choice == "#{i}"
-				@stock[0,(i-1)*2] = player
+				@stock[0,(i-1)*2][0] = player
 			end
 		end
 		for i in 4..6 do
 			if @give_choice == "#{i}"
-				@stock[2,(i-4)*2] = player
+				@stock[2,(i-4)*2][0] = player
 			end
 		end
 		for i in 7..9 do
 			if @give_choice == "#{i}"
-				@stock[4,(i-7)*2] = player
+				@stock[4,(i-7)*2][0] = player
 			end
 		end
 	end

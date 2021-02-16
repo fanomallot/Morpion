@@ -78,7 +78,8 @@ class Board
  end
 end
 #Cette classe permet de mettre en place le jeu et de le lancer avec des valeurs de base
-class Game  def initialize
+class Game  
+  def initialize
    @board = Board.new
    @current_player = ""
    @winner = false
